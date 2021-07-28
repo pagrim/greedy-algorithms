@@ -5,7 +5,7 @@ import scala.annotation.tailrec
 object FractionalKnapsack {
 
 
-  def solve(values: Array[Float], weights: Array[Float], initCapacity: Float): Float = {
+  def solve(values: Array[Float], weights: Array[Float], initCapacity: Float): Array[Float] = {
 
     val valuePerWeight = values.zip(weights).map{ case (v: Float,w: Float) => v/w }
 
@@ -24,10 +24,13 @@ object FractionalKnapsack {
               _solve(newItems, newCapacity)
             }
     }
-
-    assert(values.length == weights.length)
     val initItems = Array.fill(values.length)(0.0f)
-    val optimalItems = _solve(initItems, initCapacity)
+    _solve(initItems, initCapacity)
+  }
+
+  def calcMaxValue(values: Array[Float], weights: Array[Float], initCapacity: Float): Float = {
+    assert(values.length == weights.length)
+    val optimalItems = solve(values, weights, initCapacity)
     optimalItems.zip(values).foldLeft(0f)( (acc, pair) => acc + pair._1 * pair._2 )
   }
 
