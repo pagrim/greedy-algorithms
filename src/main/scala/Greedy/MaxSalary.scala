@@ -4,18 +4,23 @@ import scala.annotation.tailrec
 
 object MaxSalary {
 
-  def getMaxSalary(initDigits: Array[Int]): String = {
+  def getMaxSalary(initDigits: Array[Int]): Int = {
 
     @tailrec
     def _getMaxSalary(digits: Array[Int], answer: String): String = digits match {
       case Array() => answer
       case Array(_*) =>
-        val maxDigit = digits.foldLeft(Int.MinValue)( (dig, max) => digitLargest(dig, max))
-        val newAnswer = answer + maxDigit.toString
-        val newDigits = digits.drop(maxDigit)
+        val digitsWithIdx = digits.zipWithIndex
+        val maxDigitWithIdx = digitsWithIdx.foldLeft((0, -1))(
+          (maxWithIdx, digWithIdx) =>
+            if (digitLargest(digWithIdx._1, maxWithIdx._1) == maxWithIdx._1) maxWithIdx else digWithIdx)
+        val newAnswer = answer + maxDigitWithIdx._1.toString
+        val newDigits = digitsWithIdx.filter{
+          digWithIdx => digWithIdx._2 != maxDigitWithIdx._2}.map{
+          digWithIdx => digWithIdx._1}
         _getMaxSalary(newDigits, newAnswer)
     }
-    _getMaxSalary(initDigits, "")
+    _getMaxSalary(initDigits, "").toInt
   }
 
 
