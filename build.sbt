@@ -1,4 +1,4 @@
-name := "algorithmic-warm-up"
+name := "greedy-algorithms"
 
 version := "0.1"
 
