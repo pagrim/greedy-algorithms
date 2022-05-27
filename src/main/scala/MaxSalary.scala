@@ -3,7 +3,7 @@ import scala.io.StdIn.{readInt, readLine}
 
 object MaxSalary {
 
-  def getMaxSalary(initDigits: Array[Int]): Int = {
+  def getMaxSalary(initDigits: Array[Int]): String = {
 
     @tailrec
     def _getMaxSalary(digits: Array[Int], answer: String): String = digits match {
@@ -19,7 +19,7 @@ object MaxSalary {
           digWithIdx => digWithIdx._1}
         _getMaxSalary(newDigits, newAnswer)
     }
-    _getMaxSalary(initDigits, "").toInt
+    _getMaxSalary(initDigits, "")
   }
 
 

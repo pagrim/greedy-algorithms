@@ -9,11 +9,11 @@ object FractionalKnapsack {
 
     @tailrec
     def _solve(items: Array[Float], availItems: Array[Float], capacity: Float): Array[Float] = {
-      if (capacity < 0.001 || availItems.sum < 0.001) {
+      if (capacity < 0.0001 || availItems.sum < 0.0001) {
         items
       } else {
         // fetch max index filtering for only unused and available items
-        val maxIndex = valuePerWeight.lazyZip(items).lazyZip(availItems).zipWithIndex.filter(
+        val maxIndex = (valuePerWeight, items, availItems).zipped.toArray.zipWithIndex.filter(
         quad => quad._1._2 == 0 & quad._1._3 > 0).maxBy(
           quad => quad._1._1)._2
         val weightUsed = Math.min(weights(maxIndex), capacity)
