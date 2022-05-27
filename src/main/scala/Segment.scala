@@ -1,4 +1,4 @@
-package Greedy
+
 
 case class Segment(start: Int, finish: Int)
 

@@ -1,4 +1,4 @@
-package Greedy
+
 
 import scala.annotation.tailrec
 

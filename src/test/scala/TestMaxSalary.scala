@@ -1,5 +1,4 @@
 import org.scalatest.flatspec.AnyFlatSpec
-import Greedy.MaxSalary
 
 class TestMaxSalary extends AnyFlatSpec {
 

@@ -1,5 +1,4 @@
 import org.scalatest.flatspec.AnyFlatSpec
-import Greedy.AdvertRevenue
 
 class TestAdvertRevenue extends AnyFlatSpec {
 

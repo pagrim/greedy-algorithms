@@ -1,12 +1,11 @@
-package Greedy
-
 import scala.annotation.tailrec
+import scala.io.StdIn.readInt
 
 object MoneyChange {
 
   def solve(targetVal: Int): Array[Int] = {
 
-    val coinSet = Array(1,5, 10)
+    val coinSet = Array(1,5,10)
 
     @tailrec
     def _solve(coins: Array[Int]): Array[Int] = {
@@ -29,6 +28,11 @@ object MoneyChange {
   def calcMinCoins(targetVal: Int): Int = {
     val coinsNeeded = solve(targetVal)
     coinsNeeded.sum
+  }
+
+  def main(args: Array[String]): Unit = {
+    val target = readInt()
+    print(calcMinCoins(target))
   }
 
 }

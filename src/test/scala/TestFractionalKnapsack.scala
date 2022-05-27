@@ -1,5 +1,4 @@
 import org.scalatest.flatspec.AnyFlatSpec
-import Greedy.FractionalKnapsack
 
 class TestFractionalKnapsack extends AnyFlatSpec {
 
@@ -19,6 +18,15 @@ class TestFractionalKnapsack extends AnyFlatSpec {
     val capacity = 10f
     val calcMax = FractionalKnapsack.calcMaxValue(values, weights, capacity)
     assert(Math.abs(calcMax - 166.6667) < 0.0001)
+  }
+
+  "A FractionalKnapsack" should "give known correct value case 3" in {
+
+    val values = Array(500f)
+    val weights = Array(30f)
+    val capacity = 1000f
+    val calcMax = FractionalKnapsack.calcMaxValue(values, weights, capacity)
+    assert(Math.abs(calcMax - 500) < 0.0001)
   }
 
 

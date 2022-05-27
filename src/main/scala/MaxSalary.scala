@@ -1,6 +1,5 @@
-package Greedy
-
 import scala.annotation.tailrec
+import scala.io.StdIn.{readInt, readLine}
 
 object MaxSalary {
 
@@ -30,5 +29,12 @@ object MaxSalary {
 
   def digitAppend(a: Int, b: Int): Int = {
     (a.toString + b.toString).toInt
+  }
+
+  def main(args: Array[String]): Unit = {
+    val arrLen = readInt()
+    val input = readLine().split(" ").map( el => el.toInt)
+    assert(arrLen == input.length)
+    print(getMaxSalary(input))
   }
 }

@@ -1,5 +1,4 @@
 import org.scalatest.flatspec.AnyFlatSpec
-import Greedy.{Segment, SegmentSelection}
 
 class TestSegmentSelection extends AnyFlatSpec {
 
